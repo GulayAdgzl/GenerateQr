@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/eventqr/event_qr_page.dart';
+import 'package:generateqr/view/textqr/text_qr_page.dart';
+import 'package:generateqr/view/websiteqr/website_qr.dart';
+import 'package:generateqr/view/wifiqr/wifi_qr_page.dart';
 import 'package:generateqr/widgets/generate_keys.dart';
 
 import 'package:flutter/material.dart';
@@ -28,28 +32,87 @@ class GenerateQrPage extends StatelessWidget {
         mainAxisSpacing: 16.0,
         crossAxisSpacing: 16.0,
         children: [
-          _buildQrOption(context, 'assets/images/text.png'),
-          _buildQrOption(context, 'assets/images/website.png'),
-          _buildQrOption(context, 'assets/images/wifi.png'),
-          _buildQrOption(context, 'assets/images/event.png'),
-          _buildQrOption(context, 'assets/images/contact.png'),
-          _buildQrOption(context, 'assets/images/business.png'),
-          _buildQrOption(context, 'assets/images/location.png'),
-          _buildQrOption(context, 'assets/images/whatsapp.png'),
-          _buildQrOption(context, 'assets/images/email.png'),
-          _buildQrOption(context, 'assets/images/twitter.png'),
-          _buildQrOption(context, 'assets/images/instagram.png'),
-          _buildQrOption(context, 'assets/images/telephone.png'),
+          _buildQrOption(context, 'assets/images/text.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TextQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/website.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WebsiteQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/wifi.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WifiQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/event.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const EventQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/contact.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ContactQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/business.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const BusinessQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/location.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LocationQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/whatsapp.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WhatsappQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/email.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const EmailQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/twitter.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TwitterQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/instagram.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const InstagramQrPage()),
+            );
+          }),
+          _buildQrOption(context, 'assets/images/telephone.png', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TelephoneQrPage()),
+            );
+          }),
         ],
       ),
     );
   }
 
-  Widget _buildQrOption(BuildContext context, String imagePath) {
+  Widget _buildQrOption(
+      BuildContext context, String imagePath, VoidCallback onTap) {
     return InkWell(
-      onTap: () {
-        // Handle QR option tap
-      },
+      onTap: onTap,
       child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
