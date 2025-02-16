@@ -4,6 +4,8 @@ import 'package:generateqr/widgets/generate_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter/material.dart';
+
 class GenerateQrPage extends StatelessWidget {
   const GenerateQrPage({super.key});
 
@@ -19,12 +21,6 @@ class GenerateQrPage extends StatelessWidget {
                 color: const Color(0xFFD9D9D9),
               ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.menu, color: Color(0xFFD9D9D9)),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: GridView.count(
         crossAxisCount: 3,
@@ -32,57 +28,39 @@ class GenerateQrPage extends StatelessWidget {
         mainAxisSpacing: 16.0,
         crossAxisSpacing: 16.0,
         children: [
-          _buildQrOption(context, Icons.person),
-          _buildQrOption(context, Icons.language),
-          _buildQrOption(context, Icons.wifi),
-          _buildQrOption(context, Icons.event),
-          _buildQrOption(context, Icons.person),
-          _buildQrOption(context, Icons.business),
-          _buildQrOption(context, Icons.location_on),
-          _buildQrOption(context, Icons.whatsapp),
-          _buildQrOption(context, Icons.email),
-          _buildQrOption(context, FontAwesomeIcons.twitter),
-          _buildQrOption(context, FontAwesomeIcons.instagram),
-          _buildQrOption(context, Icons.send),
+          _buildQrOption(context, 'assets/images/text.png'),
+          _buildQrOption(context, 'assets/images/website.png'),
+          _buildQrOption(context, 'assets/images/wifi.png'),
+          _buildQrOption(context, 'assets/images/event.png'),
+          _buildQrOption(context, 'assets/images/contact.png'),
+          _buildQrOption(context, 'assets/images/business.png'),
+          _buildQrOption(context, 'assets/images/location.png'),
+          _buildQrOption(context, 'assets/images/whatsapp.png'),
+          _buildQrOption(context, 'assets/images/email.png'),
+          _buildQrOption(context, 'assets/images/twitter.png'),
+          _buildQrOption(context, 'assets/images/instagram.png'),
+          _buildQrOption(context, 'assets/images/telephone.png'),
         ],
       ),
     );
   }
 
-  Widget _buildQrOption(BuildContext context, IconData icon) {
+  Widget _buildQrOption(BuildContext context, String imagePath) {
     return InkWell(
       onTap: () {
         // Handle QR option tap
       },
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: const Color(0xFFFF9500),
-            width: 1,
-          ),
-        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFF9500),
-                borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                imagePath,
+                width: 86,
+                height: 82,
               ),
-              child: Icon(
-                icon,
-                color: Colors.white,
-                size: 24,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              label,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: const Color(0xFFD9D9D9),
-                  ),
             ),
           ],
         ),
