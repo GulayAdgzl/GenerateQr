@@ -118,33 +118,6 @@ class QRDisplayPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(width: 32),
-                // Save Button
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFFB800),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.save_alt,
-                          color: Colors.black,
-                        ),
-                        onPressed: _saveQrCode,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Save',
-                      style: TextStyle(
-                        color: Color(0xFFD9D9D9),
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ],
