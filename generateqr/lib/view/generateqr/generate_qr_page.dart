@@ -4,6 +4,7 @@ import 'package:generateqr/view/contactqr/contact_qr_page.dart';
 import 'package:generateqr/view/eventqr/event_qr_page.dart';
 import 'package:generateqr/view/textqr/text_qr_page.dart';
 import 'package:generateqr/view/websiteqr/website_qr.dart';
+import 'package:generateqr/view/whatsappqr/whatsapp_qr_page.dart';
 import 'package:generateqr/view/wifiqr/wifi_qr_page.dart';
 import 'package:generateqr/widgets/generate_keys.dart';
 
@@ -68,12 +69,6 @@ class GenerateQrPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const BusinessQrPage()),
-            );
-          }),
-          _buildQrOption(context, 'assets/images/location.png', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const LocationQrPage()),
             );
           }),
           _buildQrOption(context, 'assets/images/whatsapp.png', () {
