@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:generateqr/view/businessqr/business_qr_page.dart';
 import 'package:generateqr/view/contactqr/contact_qr_page.dart';
+import 'package:generateqr/view/emailqr/email_qr_page.dart';
 import 'package:generateqr/view/eventqr/event_qr_page.dart';
+import 'package:generateqr/view/instagramqr/instagram_qr_page.dart';
 import 'package:generateqr/view/textqr/text_qr_page.dart';
+import 'package:generateqr/view/twitterqr/twitter_qr_page.dart';
 import 'package:generateqr/view/websiteqr/website_qr.dart';
 import 'package:generateqr/view/whatsappqr/whatsapp_qr_page.dart';
 import 'package:generateqr/view/wifiqr/wifi_qr_page.dart';
