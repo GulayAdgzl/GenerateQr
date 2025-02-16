@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/widgets/generate_keys.dart';
 
 class GenerateQrPage extends StatelessWidget {
   const GenerateQrPage({super.key});
@@ -8,11 +9,10 @@ class GenerateQrPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        "Generate Qr",
-        style: TextStyle(
-          color: Color(0xFFD9D9D9),
-          fontSize: 27,
-        ),
+        GenerateKeys().titleGenerate,
+        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: Color(0xFFD9D9D9),
+            ),
       )),
     );
   }
