@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class EmailQrPage extends StatefulWidget {
@@ -29,7 +30,6 @@ class _EmailQrPageState extends State<EmailQrPage> {
     if (email.isEmpty) {
       setState(() {
         errorText = 'Please enter email address';
-        qrData = null;
       });
       return;
     }
@@ -37,16 +37,24 @@ class _EmailQrPageState extends State<EmailQrPage> {
     if (!isValidEmail(email)) {
       setState(() {
         errorText = 'Please enter a valid email address';
-        qrData = null;
       });
       return;
     }
 
-    // Email format for QR code
     setState(() {
       errorText = null;
-      qrData = 'mailto:$email';
     });
+
+    // Email format for QR code
+    final emailData = 'mailto:$email';
+
+    // Navigate to QR Display Page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QRDisplayPage(data: emailData),
+      ),
+    );
   }
 
   @override
@@ -84,8 +92,8 @@ class _EmailQrPageState extends State<EmailQrPage> {
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/email.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -156,18 +164,6 @@ class _EmailQrPageState extends State<EmailQrPage> {
                   ),
                 ),
               ),
-
-              // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class InstagramQrPage extends StatefulWidget {
@@ -55,11 +56,13 @@ class _InstagramQrPageState extends State<InstagramQrPage> {
       return;
     }
 
-    // Instagram profile URL format
-    setState(() {
-      errorText = null;
-      qrData = 'https://instagram.com/$cleanUsername';
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            QRDisplayPage(data: 'https://instagram.com/$cleanUsername'),
+      ),
+    );
   }
 
   @override
@@ -97,8 +100,8 @@ class _InstagramQrPageState extends State<InstagramQrPage> {
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/instagram.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -173,18 +176,6 @@ class _InstagramQrPageState extends State<InstagramQrPage> {
                   ),
                 ),
               ),
-
-              // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class TwitterQrPage extends StatefulWidget {
@@ -48,11 +49,10 @@ class _TwitterQrPageState extends State<TwitterQrPage> {
       return;
     }
 
-    // Twitter profile URL format
-    setState(() {
-      errorText = null;
-      qrData = 'https://twitter.com/$cleanUsername';
-    });
+    MaterialPageRoute(
+      builder: (context) =>
+          QRDisplayPage(data: 'https://twitter.com/$cleanUsername'),
+    );
   }
 
   @override
@@ -90,8 +90,8 @@ class _TwitterQrPageState extends State<TwitterQrPage> {
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/twitter.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -168,16 +168,6 @@ class _TwitterQrPageState extends State<TwitterQrPage> {
               ),
 
               // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class WhatsappQrPage extends StatefulWidget {
@@ -51,11 +52,10 @@ class _WhatsappQrPageState extends State<WhatsappQrPage> {
       formattedPhone = '+' + formattedPhone;
     }
 
-    // WhatsApp URL format
-    setState(() {
-      errorText = null;
-      qrData = 'https://wa.me/${formattedPhone.substring(1)}';
-    });
+    MaterialPageRoute(
+      builder: (context) =>
+          QRDisplayPage(data: 'https://wa.me/${formattedPhone.substring(1)}'),
+    );
   }
 
   @override
@@ -91,21 +91,13 @@ class _WhatsappQrPageState extends State<WhatsappQrPage> {
               Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 32),
-                child: Container(
-                  width: 64,
-                  height: 64,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFFFB800),
-                  ),
-                  child: const Icon(
-                    Icons.phone,
-                    color: Colors.black,
-                    size: 32,
-                  ),
+                child: Image.asset(
+                  'assets/images/whatsapp.png',
+                  width: 86,
+                  height: 82,
+                  color: const Color(0xFFFFB800),
                 ),
               ),
-
               // Phone Number Input
               const Text(
                 'WhatsApp Number',
@@ -174,16 +166,6 @@ class _WhatsappQrPageState extends State<WhatsappQrPage> {
               ),
 
               // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

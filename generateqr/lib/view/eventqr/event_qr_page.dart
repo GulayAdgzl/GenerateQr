@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class EventQrPage extends StatefulWidget {
@@ -108,10 +109,12 @@ DTEND:${endDate.replaceAll(RegExp(r'[^0-9]'), '')}
 LOCATION:$location
 DESCRIPTION:$description
 END:VEVENT''';
-
-    setState(() {
-      qrData = eventData;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QRDisplayPage(data: eventData),
+      ),
+    );
   }
 
   @override
@@ -149,8 +152,8 @@ END:VEVENT''';
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/event.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -250,16 +253,6 @@ END:VEVENT''';
               ),
 
               // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

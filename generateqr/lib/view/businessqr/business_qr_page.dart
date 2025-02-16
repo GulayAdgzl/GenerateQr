@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class BusinessQrPage extends StatefulWidget {
@@ -72,9 +73,12 @@ VERSION:3.0
 ORG:$companyName
 ${_industryController.text.isNotEmpty ? 'NOTE:Industry: ${_industryController.text}\n' : ''}${phone.isNotEmpty ? 'TEL:$phone\n' : ''}${email.isNotEmpty ? 'EMAIL:$email\n' : ''}${_websiteController.text.isNotEmpty ? 'URL:${_websiteController.text}\n' : ''}${_addressController.text.isNotEmpty ? 'ADR:;;${_addressController.text};${_cityController.text};;;${_countryController.text}\n' : ''}END:VCARD''';
 
-    setState(() {
-      qrData = businessData;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QRDisplayPage(data: businessData),
+      ),
+    );
   }
 
   @override
@@ -112,8 +116,8 @@ ${_industryController.text.isNotEmpty ? 'NOTE:Industry: ${_industryController.te
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/business.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -267,16 +271,6 @@ ${_industryController.text.isNotEmpty ? 'NOTE:Industry: ${_industryController.te
               ),
 
               // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

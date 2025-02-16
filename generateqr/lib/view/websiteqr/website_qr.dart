@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class WebsiteQrPage extends StatefulWidget {
@@ -53,10 +54,9 @@ class _WebsiteQrPageState extends State<WebsiteQrPage> {
       return;
     }
 
-    setState(() {
-      errorText = null;
-      qrData = url;
-    });
+    MaterialPageRoute(
+      builder: (context) => QRDisplayPage(data: url),
+    );
   }
 
   @override
@@ -93,8 +93,8 @@ class _WebsiteQrPageState extends State<WebsiteQrPage> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Container(
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xFFFFB800),
@@ -184,18 +184,6 @@ class _WebsiteQrPageState extends State<WebsiteQrPage> {
                   ),
                 ),
               ),
-
-              // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

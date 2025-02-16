@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class WifiQrPage extends StatefulWidget {
@@ -32,10 +33,10 @@ class _WifiQrPageState extends State<WifiQrPage> {
       return;
     }
 
-    // Format: WIFI:T:WPA;S:network_name;P:password;;
-    setState(() {
-      qrData = 'WIFI:T:WPA;S:$network;P:$password;;';
-    });
+    MaterialPageRoute(
+      builder: (context) =>
+          QRDisplayPage(data: 'WIFI:T:WPA;S:$network;P:$password;;'),
+    );
   }
 
   @override
@@ -187,16 +188,6 @@ class _WifiQrPageState extends State<WifiQrPage> {
               ),
 
               // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

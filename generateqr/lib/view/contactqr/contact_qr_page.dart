@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class ContactQrPage extends StatefulWidget {
@@ -78,9 +79,12 @@ N:${lastName};${firstName};;;
 FN:$firstName $lastName
 ${_companyController.text.isNotEmpty ? 'ORG:${_companyController.text}\n' : ''}${_jobController.text.isNotEmpty ? 'TITLE:${_jobController.text}\n' : ''}${phone.isNotEmpty ? 'TEL:$phone\n' : ''}${email.isNotEmpty ? 'EMAIL:$email\n' : ''}${_websiteController.text.isNotEmpty ? 'URL:${_websiteController.text}\n' : ''}${_addressController.text.isNotEmpty ? 'ADR:;;${_addressController.text};${_cityController.text};;;${_countryController.text}\n' : ''}END:VCARD''';
 
-    setState(() {
-      qrData = vCard;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QRDisplayPage(data: vCard),
+      ),
+    );
   }
 
   @override
@@ -118,8 +122,8 @@ ${_companyController.text.isNotEmpty ? 'ORG:${_companyController.text}\n' : ''}$
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 child: Image.asset(
                   'assets/images/contact.png',
-                  width: 64,
-                  height: 64,
+                  width: 86,
+                  height: 82,
                   color: const Color(0xFFFFB800),
                 ),
               ),
@@ -327,18 +331,6 @@ ${_companyController.text.isNotEmpty ? 'ORG:${_companyController.text}\n' : ''}$
                   ),
                 ),
               ),
-
-              // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),

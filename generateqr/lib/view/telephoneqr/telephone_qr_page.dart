@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generateqr/view/showqr/qr_display_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class TelephoneQrPage extends StatefulWidget {
@@ -51,11 +52,12 @@ class _TelephoneQrPageState extends State<TelephoneQrPage> {
       formattedPhone = '+' + formattedPhone;
     }
 
-    // Phone number format for QR code
-    setState(() {
-      errorText = null;
-      qrData = 'tel:$formattedPhone';
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QRDisplayPage(data: 'tel:$formattedPhone'),
+      ),
+    );
   }
 
   @override
@@ -91,18 +93,10 @@ class _TelephoneQrPageState extends State<TelephoneQrPage> {
               Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 32),
-                child: Container(
-                  width: 64,
-                  height: 64,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFFFB800),
-                  ),
-                  child: const Icon(
-                    Icons.phone_callback,
-                    color: Colors.black,
-                    size: 32,
-                  ),
+                child: Image.asset(
+                  'assets/images/text.png',
+                  width: 86,
+                  height: 82,
                 ),
               ),
 
@@ -172,18 +166,6 @@ class _TelephoneQrPageState extends State<TelephoneQrPage> {
                   ),
                 ),
               ),
-
-              // QR Code Display
-              if (qrData != null && qrData!.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: QrImageView(
-                    data: qrData!,
-                    version: QrVersions.auto,
-                    size: 200,
-                    backgroundColor: Colors.white,
-                  ),
-                ),
             ],
           ),
         ),
