@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import 'package:share_plus/share_plus.dart';
+
 class QRDisplayPage extends StatelessWidget {
   final String data;
 
@@ -10,13 +12,14 @@ class QRDisplayPage extends StatelessWidget {
   });
 
   Future<void> _shareQrCode() async {
-    // Share implementation will go here
-    // You'll need to add share_plus package
-  }
-
-  Future<void> _saveQrCode() async {
-    // Save implementation will go here
-    // You'll need to add permission_handler and path_provider packages
+    try {
+      await Share.share(
+        data,
+        subject: 'QR Code Data',
+      );
+    } catch (e) {
+      debugPrint('Error sharing QR code: $e');
+    }
   }
 
   @override
