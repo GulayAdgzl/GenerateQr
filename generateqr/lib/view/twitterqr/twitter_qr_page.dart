@@ -87,12 +87,11 @@ class _TwitterQrPageState extends State<TwitterQrPage> {
               // Twitter Icon
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.all(12),
                 child: Image.asset(
                   'assets/images/twitter.png',
                   width: 86,
                   height: 82,
-                  color: const Color(0xFFFFB800),
                 ),
               ),
 

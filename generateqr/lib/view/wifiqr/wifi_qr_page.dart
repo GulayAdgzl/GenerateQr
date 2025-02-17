@@ -71,12 +71,11 @@ class _WifiQrPageState extends State<WifiQrPage> {
               // WiFi Icon
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.all(12),
                 child: Image.asset(
                   'assets/images/wifi.png',
                   width: 64,
                   height: 64,
-                  color: const Color(0xFFFFB800),
                 ),
               ),
 

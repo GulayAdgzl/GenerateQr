@@ -91,24 +91,11 @@ class _WebsiteQrPageState extends State<WebsiteQrPage> {
               // Website Icon
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 32),
-                child: Container(
+                padding: const EdgeInsets.all(12),
+                child: Image.asset(
+                  'assets/images/website.png',
                   width: 86,
                   height: 82,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFFFB800),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'www',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ),
               ),
 

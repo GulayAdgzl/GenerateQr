@@ -92,9 +92,9 @@ class _TelephoneQrPageState extends State<TelephoneQrPage> {
               // Phone Icon
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.all(12),
                 child: Image.asset(
-                  'assets/images/text.png',
+                  'assets/images/telephone.png',
                   width: 86,
                   height: 82,
                 ),

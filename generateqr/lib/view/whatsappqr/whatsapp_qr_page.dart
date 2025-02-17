@@ -90,12 +90,11 @@ class _WhatsappQrPageState extends State<WhatsappQrPage> {
               // WhatsApp Icon
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.all(12),
                 child: Image.asset(
                   'assets/images/whatsapp.png',
                   width: 86,
                   height: 82,
-                  color: const Color(0xFFFFB800),
                 ),
               ),
               // Phone Number Input
